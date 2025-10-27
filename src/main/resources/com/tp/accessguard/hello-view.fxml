@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.tp.accessguard.controller.AccessCheckController"
+      spacing="12" alignment="CENTER">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Simulador de Acceso"/>
+    <HBox spacing="8" alignment="CENTER">
+        <Label text="Badge ID:"/>
+        <TextField fx:id="badgeField" prefWidth="220"/>
+    </HBox>
+    <HBox spacing="8" alignment="CENTER">
+        <Label text="Sector code:"/>
+        <TextField fx:id="sectorField" prefWidth="220"/>
+    </HBox>
+    <Button text="Validar" onAction="#onValidate"/>
+    <Label fx:id="resultLabel" text="Resultado..."/>
+</VBox>
+
+
