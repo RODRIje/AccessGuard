@@ -10,9 +10,10 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxml = new FXMLLoader(getClass().getResource("/com/tp/accessguard/hello-view.fxml"));
+        FXMLLoader fxml = new FXMLLoader(getClass().getResource("/com/tp/accessguard/MainMenuView.fxml"));
         Scene scene = new Scene(fxml.load());
         stage.setScene(scene);
+        stage.setTitle("AccessGuard - Menú Principal");
         stage.show();
     }
 }
