@@ -30,7 +30,7 @@ public class AccessServiceImpl implements AccessService {
         }
         Person p = op.get();
 
-        Optional<Sector> os = sectorDao.findByCodeActive(sectorCode);
+        Optional<Sector> os = sectorDao.findByCode(sectorCode);
         if (os.isEmpty()) {
             logEvent(p.getId(), 0L, ts, EventResult.DENY, "sector not found/inactive");
             return new Result(false, "sector not found/inactive", p.getId(), 0L);

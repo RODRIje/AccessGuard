@@ -33,20 +33,21 @@ public class PersonasController {
     public void initialize() {
         this.personDao = new JdbcPersonDao();
 
-        // Binding de columnas
+        // Binding columnas con getters de Person
         colFullName.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getFullName()));
         colDocumentId.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getDocumentId()));
         colBadgeId.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getBadgeId()));
         colStatus.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getStatus().name()));
 
-        // Combo estados
+        // Combo de estados
         statusCombo.setItems(FXCollections.observableArrayList(PersonStatus.values()));
 
-        // Cargar desde BD
+        // Cargar datos desde la BD
         loadFromDb();
 
         personTable.setItems(data);
 
+        // Listener selección para cargar el formulario
         personTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSel, newSel) -> {
             if (newSel != null) {
                 loadPersonToForm(newSel);
@@ -176,5 +177,6 @@ public class PersonasController {
         }
     }
 }
+
 
 
