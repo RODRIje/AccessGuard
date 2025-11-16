@@ -1,4 +1,4 @@
-package com.tp.accessguard.Service;
+package com.tp.accessguard.service;
 
 import com.tp.accessguard.model.AccessEvent;
 
