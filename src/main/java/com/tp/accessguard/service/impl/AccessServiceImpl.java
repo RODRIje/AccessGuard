@@ -63,7 +63,7 @@ public class AccessServiceImpl implements AccessService {
             return new AccessResult(false, "Acceso denegado: el sector está inactivo.");
         }
 
-        // (Acá podrías agregar chequeo de permisos/roles en el futuro)
+
         eventDao.logEvent(person.getId(), sector.getId(), timestamp, true, "Acceso permitido (reglas básicas).");
         return new AccessResult(true, "Acceso permitido.");
     }
