@@ -56,4 +56,9 @@ public class Person {
     public void unblock() {
         this.status = PersonStatus.ACTIVE;
     }
+
+    @Override
+    public String toString(){
+        return fullName;
+    }
 }
