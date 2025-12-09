@@ -16,6 +16,8 @@
     <Button text="Gestión de Personal" onAction="#onOpenPersonas"/>
     <Button text="Gestión de Sectores" onAction="#onOpenSectores"/>
     <Button text="Simulador de Acceso" onAction="#onOpenSimulador"/>
+    <Button text="Gestión de Permisos" onAction="#openPermisos"/>
+
 
 </VBox>
 

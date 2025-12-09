@@ -1,6 +1,7 @@
 package com.tp.accessguard.service.impl;
 
 import com.tp.accessguard.dao.AccessEventDao;
+import com.tp.accessguard.dao.PermissionDao;
 import com.tp.accessguard.dao.PersonDao;
 import com.tp.accessguard.dao.SectorDao;
 import com.tp.accessguard.model.Person;
@@ -16,13 +17,16 @@ public class AccessServiceImpl implements AccessService {
 
     private final PersonDao personDao;
     private final SectorDao sectorDao;
+    private final PermissionDao permissionDao;
     private final AccessEventDao eventDao;
 
     public AccessServiceImpl(PersonDao personDao,
                              SectorDao sectorDao,
+                             PermissionDao permissionDao,
                              AccessEventDao eventDao) {
         this.personDao = personDao;
         this.sectorDao = sectorDao;
+        this.permissionDao = permissionDao;
         this.eventDao = eventDao;
     }
 
@@ -63,7 +67,14 @@ public class AccessServiceImpl implements AccessService {
             return new AccessResult(false, "Acceso denegado: el sector está inactivo.");
         }
 
+        // 🔐 NUEVO: verificacion de permisos persona–sector
+        boolean hasPermission = permissionDao.hasValidPermission(person.getId(), sector.getId(), timestamp);
+        if (!hasPermission) {
+            eventDao.logEvent(person.getId(), sector.getId(), timestamp, false, "Sin permiso para este sector.");
+            return new AccessResult(false, "Acceso denegado: la persona no tiene permiso para este sector.");
+        }
 
+        // Si paso todos los checkeos
         eventDao.logEvent(person.getId(), sector.getId(), timestamp, true, "Acceso permitido (reglas básicas).");
         return new AccessResult(true, "Acceso permitido.");
     }

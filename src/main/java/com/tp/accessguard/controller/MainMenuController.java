@@ -25,6 +25,17 @@ public class MainMenuController {
         openWindow("/com/tp/accessguard/hello-view.fxml", "Simulador de Acceso");
     }
 
+    @FXML
+    private void openPermisos() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/tp/accessguard/PermisosView.fxml"));
+        Scene scene = new Scene(loader.load());
+        Stage stage = new Stage();
+        stage.setTitle("Gestión de Permisos");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
     private void openWindow(String fxmlPath, String title) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
         Stage stage = new Stage();

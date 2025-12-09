@@ -1,9 +1,11 @@
 package com.tp.accessguard.controller;
 
 import com.tp.accessguard.dao.AccessEventDao;
+import com.tp.accessguard.dao.PermissionDao;
 import com.tp.accessguard.dao.PersonDao;
 import com.tp.accessguard.dao.SectorDao;
 import com.tp.accessguard.dao.jdbc.JdbcAccessEventDao;
+import com.tp.accessguard.dao.jdbc.JdbcPermissionDao;
 import com.tp.accessguard.dao.jdbc.JdbcPersonDao;
 import com.tp.accessguard.dao.jdbc.JdbcSectorDao;
 import com.tp.accessguard.service.AccessResult;
@@ -32,9 +34,10 @@ public class AccessCheckController {
         try {
             PersonDao personDao = new JdbcPersonDao();
             SectorDao sectorDao = new JdbcSectorDao();
+            PermissionDao permDao = new JdbcPermissionDao();
             AccessEventDao eventDao = new JdbcAccessEventDao();
 
-            this.service = new AccessServiceImpl(personDao, sectorDao, eventDao);
+            this.service = new AccessServiceImpl(personDao, sectorDao, permDao, eventDao);
 
             if (resultLabel != null) {
                 resultLabel.setText("Listo para validar accesos.");

@@ -6,6 +6,8 @@ public class Permission {
     private long id;
     private long personId;
     private long sectorId;
+    private String personName;
+    private String sectorName;
     private LocalDateTime validFrom;
     private LocalDateTime validTo;
     private String createdBy;
@@ -16,6 +18,11 @@ public class Permission {
     public void setPersonId(long personId) { this.personId = personId; }
     public long getSectorId() { return sectorId; }
     public void setSectorId(long sectorId) { this.sectorId = sectorId; }
+
+    public String getPersonName() {return personName;}
+    public void setPersonName(String personName) {this.personName = personName;}
+    public String getSectorName() {return sectorName;}
+    public void setSectorName(String sectorName) {this.sectorName = sectorName;}
     public LocalDateTime getValidFrom() { return validFrom; }
     public void setValidFrom(LocalDateTime validFrom) { this.validFrom = validFrom; }
     public LocalDateTime getValidTo() { return validTo; }
