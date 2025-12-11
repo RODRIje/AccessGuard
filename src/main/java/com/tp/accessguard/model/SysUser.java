@@ -19,4 +19,9 @@ public class SysUser {
     public void setSystemRole(SystemRole systemRole) { this.systemRole = systemRole; }
     public boolean isActive() { return active; }
     public void setActive(boolean active) { this.active = active; }
+
+    @Override
+    public String toString(){
+        return username + " (" + systemRole + ")";
+    }
 }
